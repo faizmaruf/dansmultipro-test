@@ -23,7 +23,7 @@ const Home = () => {
   const loadItems = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get(`http://dev3.dansmultipro.co.id/api/recruitment/positions.json?page=${pageNumber}`);
+      const response = await axios.get(`https://dev3.dansmultipro.co.id/api/recruitment/positions.json?page=${pageNumber}`);
       const data = response.data;
       setItems((prevItems) => [...prevItems, ...data]);
       setPageNumber((prevPageNumber) => prevPageNumber + 1);
