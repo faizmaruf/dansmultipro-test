@@ -1,38 +1,114 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  /* border: 1px solid yellow; */
+  /* overflow-x: hidden; Hide horizontal scrollbar */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container-main {
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.container {
+  width: 100%;
+  padding-right: 5px;
+  padding-left: 5px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.bottom-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #0f0f0f;
+  @apply w-screen;
+}
+
+.bg-hero-gradient {
+  @apply bg-gradient-to-b from-transparent to-[#000];
+}
+.btn-tag {
+  border: 1px solid #fff;
+  @apply bg-black  rounded-3xl shadow-2xl font-bold text-xs py-1 px-2 md:py-2 md:px-5;
+}
+.active {
+  border-bottom: 1px solid red;
+}
+.active-bottom-bar {
+  border-bottom: 1px solid white;
+}
+.navbar-scroll-up {
+  background-color: #ffffff00;
+  top: -1px;
+  transition: all 0.5s;
+  -webkit-transition: background-color 0.2s linear;
+  -moz-transition: background-color 0.2s linear;
+  -o-transition: background-color 0.2s linear;
+  -ms-transition: background-color 0.2s linear;
+  transition: background-color 0.2s linear;
+}
+.navbar-scroll-down {
+  background-color: #0f0f0f;
+  top: -1px;
+  transition: all 0.2s;
+  -webkit-transition: background-color 0.2s linear;
+  -moz-transition: background-color 0.2s linear;
+  -o-transition: background-color 0.2s linear;
+  -ms-transition: background-color 0.2s linear;
+  transition: background-color 0.2s linear;
+}
+.text-head-h2 {
+  @apply font-bold text-xl ml-3 md:ml-0;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.swiper-container .swiper-button-next,
+.swiper-container .swiper-button-prev {
+  color: red;
+}
+
+.swiper-container .swiper-pagination-bullet {
+  background-color: red;
+}
+
+.swiper-container .swiper-pagination-bullet-active {
+  background-color: blue;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+    /* margin-bottom: 0rem; */
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
   }
 }
