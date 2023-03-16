@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import TvIcon from "@mui/icons-material/Tv";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import Diversity3Icon from "@mui/icons-material/Diversity3";
 const BottomBarNavigation = () => {
   const [currentUrl, setCurrentUrl] = useState("");
   useEffect(() => {
@@ -17,8 +19,8 @@ const BottomBarNavigation = () => {
         <div className="w-full h-full flex justify-evenly flex-row-reverse">
           <Link to="/movie">
             <div className="flex flex-col h-full w-28 ">
-              <TvIcon sx={{ margin: "0 auto", color: ` ${activePage == "movie" ? "red" : "white"}` }} />
-              <p className={`mx-auto font-bold text-xs  ${activePage == "movie" ? "active-bottom-bar text-primary" : "text-white"}`}>Movies</p>
+              <AccountCircleIcon sx={{ margin: "0 auto", color: ` ${activePage == "movie" ? "red" : "white"}` }} />
+              <p className={`mx-auto font-bold text-xs  text-white`}>Profile</p>
             </div>
           </Link>
           <Link to="/">
@@ -29,8 +31,8 @@ const BottomBarNavigation = () => {
           </Link>
           <Link to="/tvseries">
             <div className="flex flex-col h-full w-28 ">
-              <OndemandVideoIcon sx={{ margin: "0 auto", color: ` ${activePage == "tvseries" ? "red" : "white"}` }} />
-              <p className={`mx-auto font-bold text-xs  ${activePage == "tvseries" ? "active-bottom-bar text-primary" : "text-white"}`}>TV Series</p>
+              <Diversity3Icon sx={{ margin: "0 auto", color: ` ${activePage == "tvseries" ? "red" : "white"}` }} />
+              <p className={`mx-auto font-bold text-xs  text-white`}>Dans</p>
             </div>
           </Link>
         </div>
