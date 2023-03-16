@@ -6,6 +6,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 const CardJob = (props) => {
   const { key, item } = props;
+
   return (
     <div className="w-96 md:w-[27rem] h-56 border shadow flex flex-col py-4 px-2 rounded-lg m-auto" key={key}>
       <div className="basis-3/12  flex">
@@ -24,7 +25,7 @@ const CardJob = (props) => {
         </div>
         <div className="w-full flex gap-x-2">
           <AttachMoneyIcon sx={{ width: "18px", color: "#777" }} />
-          <p className="font-medium text-sm my-auto">Salary</p>
+          <p className="font-medium text-sm my-auto">{key % 3 == 0 ? "IDR6,000,000 - 8,000,000 " : "Company prefers not to disclose"}</p>
         </div>
         <div className="w-full flex gap-x-2">
           <WorkOutlineIcon sx={{ width: "18px", color: "#777" }} />

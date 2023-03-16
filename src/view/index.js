@@ -13,8 +13,8 @@ const Home = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [query, setQuery] = useState("");
   const [option, setOption] = useState({
-    location: "",
-    job_type: "",
+    location: null,
+    job_type: null,
   });
 
   useEffect(() => {
@@ -26,6 +26,9 @@ const Home = () => {
   useEffect(() => {
     loadItems();
   }, [pageNumber]);
+  useEffect(() => {
+    filterItems(option);
+  }, [option]);
 
   const loadItems = async () => {
     setIsLoading(true);
@@ -44,6 +47,18 @@ const Home = () => {
     setIsLoading(true);
     try {
       const response = await axios.get(`https://dev3.dansmultipro.co.id/api/recruitment/positions.json?description=${query}`);
+      const data = response.data;
+      setItems(data);
+    } catch (error) {
+      console.log(error, " << error");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  const filterItems = async (filter) => {
+    setIsLoading(true);
+    try {
+      const response = await axios.get(`https://dev3.dansmultipro.co.id/api/recruitment/positions.json?${filter.location ? "&location=" + filter.location : ""}${filter.job_type ? "&full_time=" : ""}${filter.job_type == "full_time" ? "true" : ""}`);
       const data = response.data;
       setItems(data);
     } catch (error) {
@@ -86,12 +101,12 @@ const Home = () => {
     data: [
       {
         id: 1,
-        value: "fulltime",
+        value: "full_time",
         name: "Full Time",
       },
       {
         id: 2,
-        value: "parttime",
+        value: "part_time",
         name: "Part Time",
       },
       {
@@ -103,13 +118,18 @@ const Home = () => {
   };
 
   const onSelectOption = (e, idOptions) => {
-    setOption((prevState) => ({
-      ...prevState,
-      location: e,
-    }));
+    if (idOptions === 1) {
+      setOption((prevState) => ({
+        ...prevState,
+        location: e,
+      }));
+    } else {
+      setOption((prevState) => ({
+        ...prevState,
+        job_type: e,
+      }));
+    }
   };
-
-  console.log(option, "option");
 
   return (
     <div className="container-main  flex flex-col gap-y-12 w-screen min-h-screen bg-slate-100 relative pb-12">
